@@ -1,0 +1,8 @@
+@font-face{
+    font-family:'mont';
+    src:url(/src/assets/fonts/Montserrat-vf_wght.woff) format(woff)
+}
+@font-face{
+    font-family:'pre';
+    src:url(/src/assets/fonts/PretendardKR-VF-distilled.woff2) format(woff2)
+}

@@ -1,0 +1,108 @@
+:root{
+	--theme: #ed6075
+}
+
+*,
+*::after,
+*::before{
+	box-sizing:border-box
+}
+
+html,
+body,
+h1,
+h2,
+p,
+button,
+ul,
+dl,
+dd{
+	margin:0;
+	padding:0;
+}
+
+h1,
+h2{
+	font:inherit
+}
+
+ul{
+	list-style:none
+}
+
+a{
+	text-decoration:none;
+	color:inherit;
+	-webkit-tap-highlight-color:transparent
+}
+
+input,
+button{
+	background:none;
+	border:none;
+	font:inherit;
+	color:inherit;
+	outline:none;
+	-webkit-tap-highlight-color:transparent
+}
+
+button{
+    cursor:pointer;
+}
+
+input[type=checkbox]{
+    display:none
+}
+
+::placeholder {
+    color: #c1c1c1;
+}
+
+img{
+	max-width:100%;
+	height:auto
+}
+
+.blind{
+	font-size:0;
+	line-height:0;
+	text-indent:-999px
+}
+
+html, body{
+    font:400 16px/1 'mont', 'pretend';
+	color:#272727;
+	letter-spacing:-.04em;
+	word-break: keep-all;
+	touch-action:manipulation;
+    font-variation-settings:'wght' 420
+}
+
+.forbid_scroll{
+	height:100vh;
+	overflow:hidden
+}
+
+.theme-color{
+	color:var(--theme)
+}
+.theme-bg{
+	background-color:var(--theme)
+}
+
+.light{
+    font-variation-settings:'wght' 250;
+}
+.semi{
+	font-variation-settings:'wght' 600;
+}
+.medium{
+	font-variation-settings: 'wght' 500;
+}
+
+#app{
+    width:100vw;
+    height:100vh;
+    padding:20px 50px;
+    background:#e9ecef
+}
