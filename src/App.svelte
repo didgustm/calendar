@@ -59,13 +59,23 @@
             }
         }
         for(var i = 1; i <= nextDate; i++){
-            days.push({
-                num: new Date(currentYear, currentMonth, i),
-                enabled: true,
-                edit: false,
-                script: [{text: '', done: false, active: false}],
-                utcDate:`${currentMonth+1 < 10? `0`+(currentMonth+1): currentMonth+1}${i<10? `0`+i: i}`
-            });
+            if(today.getDate() == i){
+                days.push({
+                    num: new Date(currentYear, currentMonth, i),
+                    enabled: true,
+                    edit: false,
+                    script: [{text: ['할 일 입력하기(더블클릭)'], done: false, active: false}],
+                    utcDate:`${currentMonth+1 < 10? `0`+(currentMonth+1): currentMonth+1}${i<10? `0`+i: i}`
+                });
+            } else{
+                days.push({
+                    num: new Date(currentYear, currentMonth, i),
+                    enabled: true,
+                    edit: false,
+                    script: [{text: '', done: false, active: false}],
+                    utcDate:`${currentMonth+1 < 10? `0`+(currentMonth+1): currentMonth+1}${i<10? `0`+i: i}`
+                });
+            }
         }
         for(var i = 1; i <= nextDateEnd; i++){
             days.push({
