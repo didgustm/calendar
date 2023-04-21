@@ -2,7 +2,7 @@
     import Dates from "./Dates.svelte";
     import Form from "./Form.svelte";
     
-    export let days, thisMonth, cx, solarHolidays, transferLunar, solarHoliName, lunarHoliName
+    export let days, thisMonth, cx, solarHolidays, transferLunar, solarHoliName, lunarHoliName, lastDay
 
     function openForm(row){
         //days.filter(t => t.edit = false);
@@ -51,7 +51,7 @@
     <div class="month_wrap">
         {#each days as day}
         <div class="date">
-            <Dates {day} scripts={day.script} {thisMonth} {cx} {openForm} {closeForm} {solarHolidays} {transferLunar} {solarHoliName} {lunarHoliName} />
+            <Dates {day} scripts={day.script} {thisMonth} {cx} {openForm} {closeForm} {solarHolidays} {transferLunar} {solarHoliName} {lunarHoliName} {lastDay} />
             {#if day.edit && day.enabled}
             <Form {day} scripts={day.script} {regist} {complete} {cx} {inputFocus} {addInput} {focusing} {removeInput} />
             {/if}

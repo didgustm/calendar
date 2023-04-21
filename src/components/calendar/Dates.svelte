@@ -1,5 +1,5 @@
 <script>
-    export let day, thisMonth, cx, openForm, closeForm, scripts, solarHolidays, transferLunar, solarHoliName, lunarHoliName
+    export let day, thisMonth, cx, openForm, closeForm, scripts, solarHolidays, transferLunar, solarHoliName, lunarHoliName, lastDay
 </script>
 
 <button
@@ -7,7 +7,7 @@
     class="{cx( 
         {today: day.num.getFullYear() == thisMonth.getFullYear() && day.num.getMonth() == thisMonth.getMonth() && day.num.getDate() == thisMonth.getDate()}, 
         {disabled: !day.enabled},
-        {holiday: solarHolidays.includes(day.utcDate) || transferLunar.includes(day.utcDate) || transferLunar[0] - 1 == day.utcDate}
+        {holiday: solarHolidays.includes(day.utcDate) || transferLunar.includes(day.utcDate) || lastDay == day.utcDate}
     )}"
     on:click={closeForm(day)}
     on:dblclick={openForm(day)}

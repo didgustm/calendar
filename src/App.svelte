@@ -11,8 +11,7 @@
     const solarHolidays = ["0101", "0301", "0505", "0606", "0815", "1003", "1225"],
                 solarHoliName = ["신년", "삼일절", "어린이날", "현충일", "광복절", "개천절", "크리스마스"];
     let lunarHolidays = ["0101", "0102", "0408", "0814", "0815", "0816"],
-        transferLunar = [],
-        lunarHoliName = ["설날", "", "석가탄신일", "", "추석", ""];
+        lunarHoliName = ["설날", "", "부처님 오신날", "", "추석", ""];
 
     const fullMonth = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                 fullDay = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -30,11 +29,15 @@
     $: currentYear, currentMonth, initMonth();
     
     var days = [];
-
+    var transferLunar = [];
     
     lunarHolidays.forEach(x => {
         transferLunar.push(lunarCalc(currentYear + x));
     });
+
+    var lastMonth = new Date(currentYear, transferLunar[0].substring(0,2)-1, transferLunar[0].substring(2,4)-1).toLocaleDateString().split('.')[1].replace(' ', '');
+    var lastDate = new Date(currentYear, transferLunar[0].substring(0,2)-1, transferLunar[0].substring(2,4)-1).toLocaleDateString().split('.')[2].replace(' ', '');
+    var lastDay = `${lastMonth < 10? `0`+(lastMonth): lastMonth}${lastDate < 10? `0`+lastDate: lastDate}`;
     
 
     function initMonth(){
@@ -90,7 +93,15 @@
             currentMonth = 11;
             currentYear--
         } else currentMonth--;
-        days = days
+        days = days;
+        var transferLunarUpdate = []
+        lunarHolidays.forEach(x => {
+            transferLunarUpdate.push(lunarCalc(currentYear + x));
+        });
+        transferLunar = transferLunarUpdate;
+        lastMonth = new Date(currentYear, transferLunar[0].substring(0,2)-1, transferLunar[0].substring(2,4)-1).toLocaleDateString().split('.')[1].replace(' ', '');
+        lastDate = new Date(currentYear, transferLunar[0].substring(0,2)-1, transferLunar[0].substring(2,4)-1).toLocaleDateString().split('.')[2].replace(' ', '');
+        lastDay = `${lastMonth < 10? `0`+(lastMonth): lastMonth}${lastDate < 10? `0`+lastDate: lastDate}`;
     }
 
     function next(){
@@ -99,6 +110,14 @@
             currentYear++;
             currentMonth = 0;
         }
+        var transferLunarUpdate = []
+        lunarHolidays.forEach(x => {
+            transferLunarUpdate.push(lunarCalc(currentYear + x));
+        });
+        transferLunar = transferLunarUpdate;
+        lastMonth = new Date(currentYear, transferLunar[0].substring(0,2)-1, transferLunar[0].substring(2,4)-1).toLocaleDateString().split('.')[1].replace(' ', '');
+        lastDate = new Date(currentYear, transferLunar[0].substring(0,2)-1, transferLunar[0].substring(2,4)-1).toLocaleDateString().split('.')[2].replace(' ', '');
+        lastDay = `${lastMonth < 10? `0`+(lastMonth): lastMonth}${lastDate < 10? `0`+lastDate: lastDate}`;
     }
 </script>
 
@@ -106,5 +125,5 @@
     <h1 class="blind">calendar</h1>
     <Top year={currentYear} month={fullMonth[currentMonth]} {prev} {next} />
     <Day {fullDay} />
-    <Calendar {days} {thisMonth} {cx} {solarHolidays} {transferLunar} {solarHoliName} {lunarHoliName} />
+    <Calendar {days} {thisMonth} {cx} {solarHolidays} {transferLunar} {solarHoliName} {lunarHoliName} {lastDay} />
 </main>
