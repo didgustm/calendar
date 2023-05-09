@@ -67,7 +67,8 @@
                     num: new Date(currentYear, currentMonth, i),
                     enabled: true,
                     edit: false,
-                    script: [{text: ['할 일 입력하기(더블클릭)'], done: false, active: false}],
+                    script: (currentYear == thisMonth.getFullYear() && currentMonth == thisMonth.getMonth() && i == thisMonth.getDate())?
+                    [{text: '할 일을 입력하세요(더블클릭)', done: false, active: false}]: [{text: '', done: false, active: false}],
                     utcDate:`${currentMonth+1 < 10? `0`+(currentMonth+1): currentMonth+1}${i<10? `0`+i: i}`
                 });
             } else{
